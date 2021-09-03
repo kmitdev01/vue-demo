@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ name }}</h1>
+    <div>
+      Don't have any account?
+      <span @click="goToSignup()">Sign up here</span>
+    </div>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -113,13 +117,22 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
-@Options({
-  props: {
-    msg: String,
-  },
-})
+// @Options({
+//   props: {
+//     msg: String,
+//     user: String
+//   },
+// })
+
+//   methods: {
+//     goToSignup(){
+//       this.$router.push('/signup');
+//     }
+// }
+
 export default class HelloWorld extends Vue {
   msg!: string;
+  user!: any
 }
 </script>
 
@@ -138,5 +151,9 @@ li {
 }
 a {
   color: #42b983;
+}
+span {
+  color: #42b983;
+  cursor: pointer;
 }
 </style>
