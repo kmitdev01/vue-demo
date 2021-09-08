@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ name }}</h1>
+    <h1>{{ propName }}</h1>
     <div>
       Don't have any account?
       <span @click="goToSignup()">Sign up here</span>
@@ -12,7 +12,7 @@
         >vue-cli documentation</a
       >.
     </p>
-    <h3>Installed CLI Plugins</h3>
+    <h3 @click="handleAlert(this.propUser)">Installed CLI Plugins</h3>
     <ul>
       <li>
         <a
@@ -114,26 +114,26 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-
-// @Options({
-//   props: {
-//     msg: String,
-//     user: String
-//   },
-// })
-
-//   methods: {
-//     goToSignup(){
-//       this.$router.push('/signup');
-//     }
-// }
-
-export default class HelloWorld extends Vue {
-  msg!: string;
-  user!: any
-}
+<script>
+ export default {
+    props: ['name', 'user'],
+    data() {
+      return {
+        propName: this.name,
+        propUser: this.user
+      }
+    },
+    methods: {
+      goToSignup(){
+        // console.log('heyyy there');
+        this.$router.push({path: '/signup'});
+      },
+      handleAlert(key){
+        console.log(key, typeof(key));
+        alert(`${key.name} ${key.company}`);
+      }
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
